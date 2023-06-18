@@ -1,0 +1,9 @@
+# Ignore artifacts:
+dist
+.husky
+.storybook
+storybook-static
+stories
+node_modules/
+dist/
+.prettierrc.js
