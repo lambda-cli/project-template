@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import setupLocatorUI from '@locator/runtime';
+import App from '@/router.tsx';
 
 import './global.less';
+
+console.log('App=', App);
 
 if (process.env.NODE_ENV === 'development') {
   setupLocatorUI();
@@ -20,5 +23,10 @@ if (process.env.NODE_ENV === 'production') {
 if (!CONTAINER) {
   throw document.write('<b>当前页面不存在 id=root 的 DOM 节点</b>');
 } else {
-  ReactDOM.render(<React.StrictMode>demo</React.StrictMode>, CONTAINER);
+  ReactDOM.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+    CONTAINER,
+  );
 }
