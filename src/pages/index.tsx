@@ -1,11 +1,25 @@
 import React from 'react';
+import { toJS } from 'mobx';
+import { observer } from 'mobx-react-lite';
+import { useMount } from 'ahooks';
 
 import { useNav } from '@/hooks';
+import { useStore } from '@/store';
 
 import './index.less';
 
 const Pages: React.FC = () => {
   const { toState } = useNav();
+  const { basic } = useStore();
+
+  useMount(() => {
+    basic.updateUserData({
+      userName: 'artisan',
+      userId: 272039,
+    });
+  });
+
+  console.log('userData=', toJS(basic.userData));
 
   return (
     <div>
@@ -15,4 +29,4 @@ const Pages: React.FC = () => {
   );
 };
 
-export default Pages;
+export default observer(Pages);
