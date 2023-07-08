@@ -2,9 +2,11 @@ import React from 'react';
 import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import { useMount } from 'ahooks';
+import { useQuery } from '@tanstack/react-query';
 
 import { useNav } from '@/hooks';
 import { useStore } from '@/store';
+import { queryMenu } from '@/services/menu';
 
 import './index.less';
 
@@ -19,12 +21,20 @@ const Pages: React.FC = () => {
     });
   });
 
+  const { data } = useQuery({
+    queryKey: ['queryMenu'],
+    queryFn: queryMenu,
+  });
+
   console.log('userData=', toJS(basic.userData));
 
   return (
     <div>
-      <p onClick={() => toState('/')}>首页</p>
-      <p onClick={() => toState('/list', { from: '首页' })}>列表页</p>
+      {(data || []).map((item) => (
+        <p key={item.value} onClick={() => toState(item.value)}>
+          {item.name}
+        </p>
+      ))}
     </div>
   );
 };

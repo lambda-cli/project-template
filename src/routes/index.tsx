@@ -1,7 +1,7 @@
 import React, { lazy } from 'react';
 
 const Root = lazy(() => import('@/pages/index'));
-const List = lazy(() => import('@/pages/List'));
+const Detail = lazy(() => import('@/pages/Detail'));
 
 const routes = [
   {
@@ -9,8 +9,8 @@ const routes = [
     element: Root,
   },
   {
-    path: '/list',
-    element: List,
+    path: '/detail',
+    element: Detail,
   },
 ];
 

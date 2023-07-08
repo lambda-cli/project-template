@@ -16,7 +16,9 @@
   "author": "linxiangjun",
   "license": "ISC",
   "dependencies": {
+    "@tanstack/react-query": "^4.29.19",
     "ahooks": "^3.7.8",
+    "axios": "^1.4.0",
     "lodash-es": "^4.17.21",
     "mobx": "^6.9.0",
     "mobx-react-lite": "^3.4.3",

@@ -26,3 +26,4 @@ dist-ssr
 .cache
 /public/mockServiceWorker.js
 pnpm-lock.yaml
+build

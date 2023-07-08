@@ -1,4 +1,6 @@
 node_modules/
-dist/
+build/
+.vscode/
 .prettierrc.js
 .eslintrc.js
+index.html
