@@ -24,6 +24,6 @@ dist-ssr
 *.sw?
 
 .cache
-/public/mockServiceWorker.js
+mockServiceWorker.js
 pnpm-lock.yaml
 build

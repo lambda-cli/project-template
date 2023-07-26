@@ -1,7 +1,6 @@
 import { defineConfig, loadEnv } from 'vite';
 import path from 'path';
 import reactSwc from '@vitejs/plugin-react-swc';
-import { viteExternalsPlugin } from 'vite-plugin-externals';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -10,31 +9,22 @@ export default defineConfig(({ mode }) => {
     build: {
       sourcemap: false,
       outDir: './build',
-      lib: {
-        entry: './src/index.tsx',
-        name: 'JsBunlde',
-        fileName: 'index',
+      rollupOptions: {
+        output: {
+          entryFileNames: '[name].js',
+          assetFileNames: '[name].[ext]',
+        },
       },
     },
     define: {
       'process.env.NODE_ENV': JSON.stringify(env.mode),
     },
-    plugins: [
-      reactSwc(),
-      viteExternalsPlugin({
-        react: 'React',
-        'react-dom': 'ReactDOM',
-      }),
-    ],
+    plugins: [reactSwc()],
     resolve: {
       alias: [
         {
           find: '@',
           replacement: path.resolve(__dirname, 'src'),
-        },
-        {
-          find: /^~(.*)$/,
-          replacement: '$1',
         },
         {
           find: 'root',
@@ -46,7 +36,8 @@ export default defineConfig(({ mode }) => {
       proxy: {
         '/api': {
           target: env.VITE_API_BASE_URL,
-          changeOrigin: true,
+          changeOrigin: false,
+          secure: false,
         },
       },
     },

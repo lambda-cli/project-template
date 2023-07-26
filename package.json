@@ -10,7 +10,7 @@
     "eslint": "eslint --fix src/ --ext .js,.jsx,.ts,.tsx",
     "stylelint": "stylelint 'src/**/*.{css,less,scss}'",
     "stylelint:fix": "stylelint --fix 'src/**/*.{css,less,scss}",
-    "prepare": "husky install && npx msw init public/ --save"
+    "prepare": "npx husky install && npx msw init ./ --save"
   },
   "keywords": [],
   "author": "linxiangjun",
@@ -68,6 +68,6 @@
     "node": ">=16.0.0"
   },
   "msw": {
-    "workerDirectory": "public"
+    "workerDirectory": ""
   }
 }
